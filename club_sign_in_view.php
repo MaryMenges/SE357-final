@@ -21,23 +21,25 @@
       <div class="col-md-4" style="text-align:center">
         <!--Club Sign-In Form-->
         <h2>MU Club Attendance</h2>
-        <form>
+        <form action="club_main_page.php?action=validate" method="post">
+
+          <div class="alert alert-info" role="alert"><?php echo $error_message ?></div>
+
           <fieldset class="form-group">
-            <input type="text" class="form-control" for="clubUsername" placeholder="Username" />
+            <input type="text" class="form-control" for="clubUsername" placeholder="Username" name="username" />
           </fieldset>
 
           <fieldset class="form-group">
-            <input type="password" class="form-control" for="clubPassword" placeholder="Password" />
+            <input type="password" class="form-control" for="clubPassword" placeholder="Password" name="password" />
           </fieldset>
 
           <fieldset class="form-group">
             <button type="submit" class="btn btn-primary">Sign In</button>
           </fieldset>
 
-          <small class="text-muted">New club? <a href="club_register.html">Register here</a></small>
+          <small class="text-muted">New club? <a href="club_register.php">Register here</a></small>
 
         </form>
-
 
       </div>
 
@@ -46,10 +48,6 @@
       </div>
 
     </div>
-
-
-
-
 
     <!-- jQuery necesssary for bootstrap.js-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

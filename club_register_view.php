@@ -22,22 +22,22 @@
         <!--Club Registration Form-->
         <h2>Register Club</h2>
 
-        <form>
+        <form action='club_main_page.php?action=create_account' method='POST'>
 
           <fieldset class="form-group">
-            <input type="text" class="form-control" for="clubName" placeholder="Club Name" />
+            <input type="text" class="form-control" for="clubName" placeholder="Club Name" name="club_name" />
           </fieldset>
 
           <fieldset class="form-group">
-            <input type="text" class="form-control" for="clubUsername" placeholder="Username" />
+            <input type="text" class="form-control" for="clubUsername" placeholder="Username" name="username" />
           </fieldset>
 
           <fieldset class="form-group">
-            <input type="password" class="form-control" for="clubPassword" placeholder="Password" />
+            <input type="password" class="form-control" for="clubPassword" placeholder="Password" name="password" />
           </fieldset>
 
           <fieldset class="form-group">
-            <input type="password" class="form-control" for="clubRetypePassword" placeholder="Confirm Password" />
+            <input type="password" class="form-control" for="clubRetypePassword" placeholder="Confirm Password" name="confirm_password" />
           </fieldset>
 
           <fieldset class="form-group">
@@ -46,7 +46,6 @@
 
         </form>
 
-
       </div>
 
       <div class="col-md-4">
@@ -54,10 +53,6 @@
       </div>
 
     </div>
-
-
-
-
 
     <!-- jQuery necesssary for bootstrap.js-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
