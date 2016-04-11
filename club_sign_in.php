@@ -31,6 +31,11 @@ else if ($get_variables['action']=='password_mismatch') {
   $password = "";
   $error_message = 'PASSWORDS DID NOT MATCH';
 }
+else if ($get_variables['action']=='sign_out') {
+  session_unset();
+  session_destroy();
+  console.log("sign out successful");
+}
 
 // View
 include ('club_sign_in_view.php');

@@ -19,11 +19,12 @@ if ($get_variables['action']=='validate') {
 		if (!is_null($club_id)) {
 			session_start();
 			$_SESSION['club_id'] = $club_id;
+			$data = getClubInfo($club_id);
 
 			// date_default_timezone_set('America/New_York');
 			// $last_login_date_time = date('Y-m-d H:i:s');
 
-			echo 'WELCOME - YOU HAVE SUCCESSFULLY SIGNED IN AND SESSION VARIABLE club_id HAS BEEN SET';
+			// echo 'WELCOME - YOU HAVE SUCCESSFULLY SIGNED IN AND SESSION VARIABLE club_id HAS BEEN SET';
 		}
 	  else {
 			header("Location:  http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/club_sign_in.php?action=invalid_login");

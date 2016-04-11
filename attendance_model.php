@@ -84,4 +84,22 @@ function insertClub($club_name, $username, $password) {
 	}
 }
 
+function getClubInfo($club_id) {
+	global $db;
+	$result = array();
+
+
+		try {
+			$stmt = $db->query("SELECT club_name FROM club WHERE club_id = '$club_id'");
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+			return $result;
+		}
+		catch (PDOException $ex) {
+				echo "Exception in getClubInfo";
+		}
+}
+
+
+
 ?>
