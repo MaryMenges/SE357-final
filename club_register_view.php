@@ -24,6 +24,8 @@
 
         <form action='club_main_page.php?action=create_account' method='POST'>
 
+          <div class="alert alert-info" role="alert"><?php echo $error_message ?></div>
+
           <fieldset class="form-group">
             <input type="text" class="form-control" for="clubName" placeholder="Club Name" name="club_name" />
           </fieldset>
