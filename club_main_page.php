@@ -11,6 +11,7 @@ if ($get_variables['action']=='validate') {
 	$post_variables = $_POST;
 	$username = $post_variables['username'];
 	$password = $post_variables['password'];
+
 	// date_default_timezone_set('America/New_York');
 	// $last_login_date_time = date('Y-m-d H:i:s');
 	$club_id = validateCredentials($username, $password);
@@ -18,6 +19,25 @@ if ($get_variables['action']=='validate') {
 		session_start();
 		$_SESSION['club_id'] = $club_id;
 		echo 'WELCOME - YOU HAVE SUCCESSFULLY SIGNED IN AND SESSION VARIABLE club_id HAS BEEN SET';
+
+	// $username_exists = usernameExists($username);
+	//
+	// if($username_exists){
+	// 	$club_id = validateCredentials($username, $password);
+	// 	if (!is_null($club_id)) {
+	// 		session_start();
+	// 		$_SESSION['club_id'] = $club_id;
+	// 		$data = getClubInfo($club_id);
+	//
+	// 		// date_default_timezone_set('America/New_York');
+	// 		// $last_login_date_time = date('Y-m-d H:i:s');
+	//
+	// 		// echo 'WELCOME - YOU HAVE SUCCESSFULLY SIGNED IN AND SESSION VARIABLE club_id HAS BEEN SET';
+	// 	}
+	//   else {
+	// 		header("Location:  http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/club_sign_in.php?action=invalid_login");
+	// 		exit();
+	//   }
 	}
 	else {
 		header("Location:  http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/club_sign_in.php?action=invalid_login");

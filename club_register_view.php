@@ -43,6 +43,7 @@
           </fieldset>
 
           <fieldset class="form-group">
+            <a href="club_sign_in_view.php" class="btn btn-default">Cancel</a>
             <button type="submit" class="btn btn-primary">Register</button>
           </fieldset>
 
