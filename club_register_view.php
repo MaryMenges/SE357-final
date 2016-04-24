@@ -22,7 +22,7 @@
         <!--Club Registration Form-->
         <h2>Register Club</h2>
 
-        <form action='club_main_page.php?action=create_account' method='POST'>
+        <form action='club_main_page.php?action=create_account' method='POST' onsubmit="return validateClub(this)">
 
           <div class="alert alert-info" role="alert"><?php echo $error_message ?></div>
 
@@ -60,6 +60,7 @@
     <!-- jQuery necesssary for bootstrap.js-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="validations.js"></script>
   </body>
 
 </html>

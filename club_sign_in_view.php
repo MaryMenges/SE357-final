@@ -21,7 +21,7 @@
       <div class="col-md-4" style="text-align:center">
         <!--Club Sign-In Form-->
         <h2>MU Club Attendance</h2>
-        <form action="club_main_page.php?action=validate" method="post">
+        <form action="club_main_page.php?action=validate" method="POST">
 
           <div class="alert alert-info" role="alert"><?php echo $error_message ?></div>
 

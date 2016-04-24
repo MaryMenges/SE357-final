@@ -25,7 +25,7 @@
 
         <!-- Sign out change path when php-->
         <div class="col-md-4" class="form-group">
-          <a href="club_sign_in.php" type="button" class="btn btn-primary btn-sm pull-right" style="margin-left:10px" action="club_sign_in.php?action=sign_out">Sign Out</a>
+          <a href="club_sign_in.php?action=sign_out" type="button" class="btn btn-primary btn-sm pull-right" style="margin-left:10px">Sign Out</a>
           <button type="button" class="btn btn-default btn-sm pull-right" data-toggle="modal" data-target="#new-event-modal">New Event</button>
           <button type="button" class="btn btn-sm pull-right" style="margin-right:10px; border-color:gray" data-toggle="modal" data-target="#new-student-modal"><span class="glyphicon glyphicon-user"></span></button>
 
@@ -67,24 +67,24 @@
 
               <!-- New event form -->
               <div class="modal-body">
-                <form>
+                <form action="club_main_page.php?action=new_event" method="POST" onsubmit="return validateEvent(this)">
 
                   <fieldset class="form-group">
-                    <input type="text" class="form-control" for="eventName" placeholder="Name" name="" />
+                    <input type="text" class="form-control" for="eventName" placeholder="Name" name="event_name" />
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <select class="form-control" for="eventType" name="">
+                    <select class="form-control" for="eventType" name="event_type">
                       <option value="" hidden>Type</option>
-                      <option>General Meeting</option>
-                      <option>Officer Meeting</option>
-                      <option>Special Event</option>
+                      <option value="general_meeting">General Meeting</option>
+                      <option value="officer_meeting">Officer Meeting</option>
+                      <option value="special_event">Special Event</option>
                     </select>
                   </fieldset>
 
                   <fieldset class="form-group">
                     <div class="input-group date" date-provide="datepicker">
-                      <input type="text" class="form-control" placeholder="Date" name="" id="picker"/>
+                      <input type="text" class="form-control" placeholder="Date" name="date" id="picker" readonly/>
                       <div class="input-group-addon">
                         <span class="glyphicon glyphicon-th pull-left"></span>
                       </div>
@@ -92,10 +92,9 @@
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Create</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create</button><!--removed data-dismiss="modal"-->
                   </fieldset>
-
 
                 </form>
 
@@ -119,45 +118,47 @@
               <!-- New member form -->
               <div class="modal-body">
 
-                <form>
+                <form action="club_main_page.php?action=new_member" method="POST" onsubmit="return validateMember(this)">
 
                   <fieldset class="form-group">
-                    <input type="text" class="form-control" for="studentID" placeholder="Student ID" />
+                    <input type="text" class="form-control" for="studentID" placeholder="Student ID" name="student_id" />
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <input type="text" class="form-control" for="memberFName" placeholder="First Name" />
+                    <input type="text" class="form-control" for="memberFName" placeholder="First Name" name="first_name" />
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <input type="text" class="form-control" for="memberLName" placeholder="Last Name" />
+                    <input type="text" class="form-control" for="memberLName" placeholder="Last Name" name="last_name" />
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <input type="email" class="form-control" for="memberEmail" placeholder="Email" />
+                    <input type="text" class="form-control" for="memberEmail" placeholder="Email" name="email" />
                   </fieldset>
 
                   <fieldset class="form-group">
-                    <input type="text" class="form-control" for="memberMajor" placeholder="Major" />
+                    <input type="text" class="form-control" for="memberPhone" placeholder="Phone" name="phone" />
+                  </fieldset>
+
+                  <fieldset class="form-group">
+                    <input type="text" class="form-control" for="memberMajor" placeholder="Major" name="major"/>
                   </fieldset>
 
                   <fieldset class="form-group">
                     <div class="input-group date" date-provide="datepicker">
-                      <input type="text" class="form-control" placeholder="Date" name="" id="year"/>
+                      <input type="text" class="form-control" placeholder="Graduation Year" name="grad_year" id="year" readonly/>
                       <div class="input-group-addon">
                         <span class="glyphicon glyphicon-th pull-left"></span>
                       </div>
                     </div>
                   </fieldset>
 
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
-
-
+                  <fieldset class="form-group">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button><!--removed data-dismiss="modal"-->
+                  </fieldset>
 
                 </form>
-
-
 
               </div>
             </div>
@@ -190,18 +191,22 @@
       $(document).ready(function() {
 
         $('#picker').datepicker({
-          format: "mm/dd/yy",
-          autoclose: true
+          format: "mm-dd-yyyy",
+          autoclose: true,
+          ignoreReadonly: true
         });
 
         $('#year').datepicker({
           format: "yyyy",
           viewMode: "years",
           minViewMode: "years",
-          autoclose: true
+          autoclose: true,
+          ignoreReadonly: true
         });
       });
     </script>
+
+    <script type="text/javascript" src="validations.js"></script>
 
   </body>
 
