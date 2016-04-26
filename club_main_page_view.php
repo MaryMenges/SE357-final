@@ -32,7 +32,7 @@
         </div>
 
         <!-- Member Table -->
-        <table class="table table-striped table-hover table-responsive table-small">
+        <!-- <table class="table table-striped table-hover table-responsive table-small">
           <thead>
             <tr>
               <th>Member ID</th>
@@ -55,8 +55,47 @@
               <td>2</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
 
+
+        <table class="table table-striped table-hover table-responsive table-small">
+          <thead>
+            <tr>
+              <th>Member ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th># Attended</th>
+<!-- Printing event titles-->
+<?php
+foreach($event as $e) {
+print<<<print_one
+<th>$e[event_name]</th>
+print_one;
+}
+?>
+            </tr>
+          </thead>
+          <tbody>
+<!-- Printing members of club -->
+<?php
+
+
+
+foreach($member as $m) {
+print <<<print_one
+<tr>
+<td>$m[student_id]</td>
+<td>$m[first_name]</td>
+<td>$m[last_name]</td>
+<td>0</td>
+</tr>
+print_one;
+}
+
+
+?>
+</tbody>
+</table>
 
         <div class="modal fade" id="new-event-modal" role="dialog">
           <div class="modal-dialog modal-sm">
@@ -178,24 +217,19 @@
 
     <script>
       $('#new-student-modal').on('hidden.bs.modal', function(){
-
         window.location.reload(true);
       });
       $('#new-event-modal').on('hidden.bs.modal', function(){
-
         window.location.reload(true);
       });
-
     </script>
     <script>
       $(document).ready(function() {
-
         $('#picker').datepicker({
           format: "mm-dd-yyyy",
           autoclose: true,
           ignoreReadonly: true
         });
-
         $('#year').datepicker({
           format: "yyyy",
           viewMode: "years",

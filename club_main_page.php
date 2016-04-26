@@ -91,6 +91,10 @@ else if ($get_variables['action']=='new_member') {
 
 session_start();
 $data[club_name] = $_SESSION['club_name'];
+$member = selectMember($_SESSION['club_id']);
+$event = selectEvent($_SESSION['club_id']);
+
+// print_r($member);
 
 // View
 include ('club_main_page_view.php');

@@ -128,4 +128,37 @@ function selectClubName($club_id) {
 		}
 }
 
+function selectMember($club_id) {
+	global $db;
+	$result = array();
+
+		try {
+			$stmt = $db->prepare("CALL selectMember(:club_id) ");
+			$stmt->execute(array(':club_id' => $club_id));
+
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $result;
+		}
+		catch (PDOException $ex) {
+				echo "Exception in selectMember";
+		}
+}
+
+
+function selectEvent($club_id) {
+	global $db;
+	$result = array();
+
+		try {
+			$stmt = $db->prepare("CALL selectEvent(:club_id) ");
+			$stmt->execute(array(':club_id' => $club_id));
+
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $result;
+		}
+		catch (PDOException $ex) {
+				echo "Exception in selectEvent";
+		}
+}
+
 ?>
