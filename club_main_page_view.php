@@ -19,52 +19,56 @@
       <div class="row" style="padding-top:20px;">
 
         <!-- Club Title -->
-        <div class="col-md-8" style="font-size:20px;">
+        <div class="col-md-8" style="font-size:32px;">
           <?php echo $data[club_name]; ?>
         </div>
+
+
 
         <!-- Sign out change path when php-->
         <div class="col-md-4" class="form-group">
           <a href="club_sign_in.php?action=sign_out" type="button" class="btn btn-primary btn-sm pull-right" style="margin-left:10px">Sign Out</a>
           <button type="button" class="btn btn-default btn-sm pull-right" data-toggle="modal" data-target="#new-event-modal">New Event</button>
-          <button type="button" class="btn btn-sm pull-right" style="margin-right:10px; border-color:gray" data-toggle="modal" data-target="#new-student-modal"><span class="glyphicon glyphicon-user"></span></button>
+          <button type="button" class="btn btn-sm pull-right" style="margin-right:10px; border-color:gray" data-toggle="modal" data-target="#new-student-modal"><span class="glyphicon glyphicon-user"></span></button><br />
 
         </div>
+      </div>
 
-        <!-- Member Table -->
-        <!-- <table class="table table-striped table-hover table-responsive table-small">
-          <thead>
-            <tr>
-              <th>Member ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th># Attended</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">s0912276</th>
-              <td>Taylor</td>
-              <td>Klodowski</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <th scope="row">s0934456</th>
-              <td>Mary</td>
-              <td>Menges</td>
-              <td>2</td>
-            </tr>
-          </tbody>
-        </table> -->
+        <div class="row">
+          <!-- Events dropdown -->
+          <div class="col-md-8">
 
+          </div>
 
-        <table class="table table-striped table-hover table-responsive table-small">
-          <thead>
-            <tr>
-              <th>Member ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th># Attended</th>
+          <div class="col-md-4">
+
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Go!</button>
+            </span>
+            <select class="form-control" for="eventType" style="">
+              <option value="" hidden>Select Event to Begin Sign In</option>
+<?php
+foreach($printevent as $pe) {
+print<<<print_one
+<option>$pe[event_name]</option>
+print_one;
+}
+?>
+            </select>
+          </div>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-striped table-hover table-responsive table-small">
+              <thead>
+                <tr>
+                  <th>Member ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th># Attended</th>
 <!-- Printing event titles-->
 <?php
 foreach($event as $e) {
@@ -73,14 +77,11 @@ print<<<print_one
 print_one;
 }
 ?>
-            </tr>
-          </thead>
-          <tbody>
-<!-- Printing members of club -->
+                </tr>
+              </thead>
+              <tbody>
+            <!-- Printing members of club -->
 <?php
-
-
-
 foreach($member as $m) {
 print <<<print_one
 <tr>
@@ -91,11 +92,15 @@ print <<<print_one
 </tr>
 print_one;
 }
-
-
 ?>
-</tbody>
-</table>
+            </tbody>
+            </table>
+
+            </div>
+
+          </div>
+        </div>
+
 
         <div class="modal fade" id="new-event-modal" role="dialog">
           <div class="modal-dialog modal-sm">
@@ -136,13 +141,9 @@ print_one;
                   </fieldset>
 
                 </form>
-
               </div>
             </div>
           </div>
-
-
-        </div>
 
 
 
@@ -203,8 +204,7 @@ print_one;
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
 
 
 
@@ -243,5 +243,4 @@ print_one;
     <script type="text/javascript" src="validations.js"></script>
 
   </body>
-
 </html>

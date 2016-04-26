@@ -93,6 +93,7 @@ session_start();
 $data[club_name] = $_SESSION['club_name'];
 $member = selectMember($_SESSION['club_id']);
 $event = selectEvent($_SESSION['club_id']);
+$printevent = selectEvent($_SESSION['club_id']);
 
 // print_r($member);
 
