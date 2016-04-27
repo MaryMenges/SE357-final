@@ -40,24 +40,26 @@
 
           </div>
 
-          <div class="col-md-4">
+        <div class="col-md-4">
+
+          <form action="member_sign_in.php?action=start_event_sign_in" method="POST">
 
           <div class="input-group">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="submit">Go!</button>
+              <button class="btn btn-default" type="submit" >Go!</button>
             </span>
-            <select class="form-control" for="eventType" style="">
-              <option value="" hidden>Select Event to Begin Sign In</option>
+            <select class="form-control" for="eventType" name="event_id" style="">
+              <option hidden>Select Event to Begin Sign In</option>
 <?php
 foreach($event as $e) {
 print<<<print_one
-<option>$e[event_name]</option>
+<option value="$e[event_id]">$e[event_name]</option>
 print_one;
 }
 ?>
             </select>
           </div>
-        </div>
+        </form>
         </div>
 
         <div class="row">

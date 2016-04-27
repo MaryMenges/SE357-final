@@ -160,6 +160,41 @@ function selectEvent($club_id) {
 		}
 }
 
+function selectEventName($event_id) {
+	global $db;
+	$result = array();
+
+		try {
+			$stmt = $db->prepare("CALL selectEventName(:event_id) ");
+			$stmt->execute(array(':event_id' => $event_id));
+
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $result['event_name'];
+		}
+		catch (PDOException $ex) {
+				echo "Exception in selectEventName";
+		}
+}
+
+
+
+function selectEventDetails($event_id) {
+	global $db;
+	$result = array();
+
+		try {
+			$stmt = $db->prepare("CALL selectEventDetails(:event_id) ");
+			$stmt->execute(array(':event_id' => $event_id));
+
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			return $result;
+		}
+		catch (PDOException $ex) {
+				echo "Exception in selectEventDetails";
+		}
+}
+
+
 // returns an associative array with the key being the student_id and the value being an array of events attended (event_id)
 function getClubAttendance($club_id) {
 	global $db;
