@@ -1,0 +1,16 @@
+/*tr{
+width: 100%;
+table-layout: fixed;
+}
+
+table{
+             // <-- Select the height of the table
+ display: -moz-groupbox;    // Firefox Bad Effect
+}
+tbody{
+  overflow-y: auto;
+  overflow-x: scroll;
+  height: 500px;            //  <-- Select the height of the body
+  width: 100%;
+  position: absolute;
+}*/

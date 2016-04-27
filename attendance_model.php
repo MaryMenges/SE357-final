@@ -42,6 +42,26 @@ function validateCredentials($username, $password) {
 	}
 }
 
+function validateMemberForEvent($student_id, $club_id) {
+	global $db;
+
+	try {
+		//$stmt = $db->query("SELECT club_id FROM club_login WHERE username = '$username' AND password = '$password' ");
+		$stmt = $db->prepare("CALL validateMemberForEvent(:student_id, :club_id) ");
+		$stmt->execute(array(':student_id' => $student_id, ':club_id' => $club_id));
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() == 0) {
+      return NULL;
+    } else {
+      return $result['out_member_id'];
+    }
+	}
+	catch (PDOException $ex) {
+			echo "Exception in validateMemberForEvent";
+	}
+}
+
+
 // inserts a new club and returns the club_id *** should use a transaction ***
 function insertClub($club_name, $username, $password) {
 	global $db;
@@ -193,7 +213,6 @@ function selectEventDetails($event_id) {
 				echo "Exception in selectEventDetails";
 		}
 }
-
 
 // returns an associative array with the key being the student_id and the value being an array of events attended (event_id)
 function getClubAttendance($club_id) {

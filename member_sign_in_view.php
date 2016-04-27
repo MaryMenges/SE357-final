@@ -25,12 +25,13 @@
               <div class="alert alert-info" role="alert"><?php echo $error_message ?></div>
 
               <fieldset class="form-group">
-                <input type="text" class="form-control" for="" placeholder="Student ID" />
+                <input type="text" class="form-control" for="" name="student_id" placeholder="Student ID" />
               </fieldset>
 
               <fieldset class="form-group">
                 <button type="submit" class="btn btn-primary">Sign In</button>
-                <button type="" class="btn btn-secondary">Go Back</button>
+                <a href="club_main_page.php" type="button" class="btn btn-default" style="margin-left:10px">Go Back</a>
+
               </fieldset>
 
             </form>

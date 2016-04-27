@@ -9,7 +9,7 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 
-    <!-- <link href="custom.css" rel="stylesheet"> -->
+    <link href="styles.css" rel="stylesheet">
 
     <title>Attendance</title>
   </head>
@@ -27,9 +27,9 @@
 
         <!-- Sign out change path when php-->
         <div class="col-md-4" class="form-group">
-          <a href="club_sign_in.php?action=sign_out" type="button" class="btn btn-primary btn-sm pull-right" style="margin-left:10px">Sign Out</a>
-          <button type="button" class="btn btn-default btn-sm pull-right" data-toggle="modal" data-target="#new-event-modal">New Event</button>
-          <button type="button" class="btn btn-sm pull-right" style="margin-right:10px; border-color:gray" data-toggle="modal" data-target="#new-student-modal"><span class="glyphicon glyphicon-user"></span></button><br />
+          <a href="club_sign_in.php?action=sign_out" type="button" class="btn btn-primary pull-right" style="margin-left:10px">Sign Out</a>
+          <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#new-event-modal">New Event</button>
+          <button type="button" class="btn  pull-right" style="margin-right:10px; border-color:gray" data-toggle="modal" data-target="#new-student-modal"><span class="glyphicon glyphicon-user"></span></button><br />
 
         </div>
       </div>
@@ -44,10 +44,7 @@
 
           <form action="member_sign_in.php?action=start_event_sign_in" method="POST">
 
-          <div class="input-group">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="submit" >Go!</button>
-            </span>
+          <div class="input-group" style="margin-bottom:25px;">
             <select class="form-control" for="eventType" name="event_id" style="">
               <option hidden>Select Event to Begin Sign In</option>
 <?php
@@ -58,12 +55,16 @@ print_one;
 }
 ?>
             </select>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit" >Go!</button>
+            </span>
           </div>
         </form>
         </div>
 
         <div class="row">
           <div class="col-md-12">
+
             <table class="table table-striped table-hover table-responsive table-small">
               <thead>
                 <tr>
@@ -97,7 +98,7 @@ print_one;
 foreach($event as $e) {
 if (in_array($e[event_id], $attendance[$m[member_id]])) {
 print <<<print_two
-<td align="center"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+<td align="left"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
 print_two;
 } else {
 print <<<print_three
