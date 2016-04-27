@@ -93,9 +93,9 @@ session_start();
 $data[club_name] = $_SESSION['club_name'];
 $member = selectMember($_SESSION['club_id']);
 $event = selectEvent($_SESSION['club_id']);
-$printevent = selectEvent($_SESSION['club_id']);
-
-// print_r($member);
+//$printevent = selectEvent($_SESSION['club_id']);
+$attendance = getClubAttendance($_SESSION['club_id']);
+//print_r($attendance);
 
 // View
 include ('club_main_page_view.php');

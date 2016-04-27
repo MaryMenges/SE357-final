@@ -49,9 +49,9 @@
             <select class="form-control" for="eventType" style="">
               <option value="" hidden>Select Event to Begin Sign In</option>
 <?php
-foreach($printevent as $pe) {
+foreach($event as $e) {
 print<<<print_one
-<option>$pe[event_name]</option>
+<option>$e[event_name]</option>
 print_one;
 }
 ?>
@@ -65,7 +65,7 @@ print_one;
             <table class="table table-striped table-hover table-responsive table-small">
               <thead>
                 <tr>
-                  <th>Member ID</th>
+                  <th>Student ID</th>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th># Attended</th>
@@ -89,8 +89,25 @@ print <<<print_one
 <td>$m[first_name]</td>
 <td>$m[last_name]</td>
 <td>0</td>
-</tr>
 print_one;
+
+
+foreach($event as $e) {
+if (in_array($e[event_id], $attendance[$m[member_id]])) {
+print <<<print_two
+<td align="center"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+print_two;
+} else {
+print <<<print_three
+<td></td>
+print_three;
+}
+}
+
+
+print <<<print_four
+</tr>
+print_four;
 }
 ?>
             </tbody>
@@ -144,6 +161,7 @@ print_one;
               </div>
             </div>
           </div>
+        </div>
 
 
 

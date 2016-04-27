@@ -144,7 +144,6 @@ function selectMember($club_id) {
 		}
 }
 
-
 function selectEvent($club_id) {
 	global $db;
 	$result = array();
@@ -158,6 +157,48 @@ function selectEvent($club_id) {
 		}
 		catch (PDOException $ex) {
 				echo "Exception in selectEvent";
+		}
+}
+
+// returns an associative array with the key being the student_id and the value being an array of events attended (event_id)
+function getClubAttendance($club_id) {
+	global $db;
+	$memberResult = array();
+	$attendanceResult = array();
+	$result = array();
+
+		try {
+			$stmt = $db->prepare("CALL selectMember(:club_id) ");
+			$stmt->execute(array(':club_id' => $club_id));
+
+			$memberResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			unset($stmt);
+
+			//$stmt = $db->prepare("CALL selectAttendance(:member_id) ");
+			foreach($memberResult as $member) {
+				//print_r($member['member_id']);
+
+				$stmt = $db->prepare("CALL selectAttendance(:member_id) ");
+				$stmt->execute(array(':member_id' => $member['member_id']));
+
+				$attendanceResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				unset($stmt);
+
+				$myIndexedArray = array();
+
+				foreach($attendanceResult as $attendance) {
+					$myIndexedArray[] = $attendance['event_id'];
+				}
+
+				$result[$member['member_id']] = $myIndexedArray;
+			}
+
+			return $result;
+
+		}
+		catch (PDOException $ex) {
+				echo "Exception in getClubAttendance";
+				echo $ex->getMessage();
 		}
 }
 
