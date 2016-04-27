@@ -14,3 +14,10 @@ tbody{
   width: 100%;
   position: absolute;
 }*/
+
+.myscroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 500px;
+  width: 100%;
+}

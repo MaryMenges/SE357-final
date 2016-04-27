@@ -29,7 +29,7 @@
         <div class="col-md-4" class="form-group">
           <a href="club_sign_in.php?action=sign_out" type="button" class="btn btn-primary pull-right" style="margin-left:10px">Sign Out</a>
           <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#new-event-modal">New Event</button>
-          <button type="button" class="btn  pull-right" style="margin-right:10px; border-color:gray" data-toggle="modal" data-target="#new-student-modal"><span class="glyphicon glyphicon-user"></span></button><br />
+          <button type="button" class="btn  pull-right" style="margin-right:10px; border-color:gray" data-toggle="modal" data-target="#new-student-modal">Student<span class="glyphicon glyphicon-user" style="padding-left:5px;"></span></button><br />
 
         </div>
       </div>
@@ -64,6 +64,8 @@ print_one;
 
         <div class="row">
           <div class="col-md-12">
+            <div class="myscroll">
+
 
             <table class="table table-striped table-hover table-responsive table-small">
               <thead>
@@ -115,7 +117,7 @@ print_four;
 ?>
             </tbody>
             </table>
-
+</div>
             </div>
 
           </div>
