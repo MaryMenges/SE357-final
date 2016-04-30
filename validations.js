@@ -51,27 +51,81 @@ function validateEmail(field){
 }
 
 //==================================================
-function validateClub(form){
+// function validateClub(form){
+//
+//   fail = validateClubName(form.club_name.value)
+//   fail += validateUsername(form.username.value)
+//   fail += validatePassword(form.password.value, form.confirm_password.value)
+//
+//   if (fail == "") return true
+//   else {alert(fail); return false}
+// }
+//
+// function validateClubName(field){
+//   return (field == "") ? "No Club Name was entered.\n" : ""
+// }
+//
+// function validateUsername(field){
+//   return (field == "") ? "No Username was entered.\n" : ""
+// }
+//
+// function validatePassword(field1, field2){
+//   if (field1 == "") return "No Password was entered.\n"
+//   else if (field1.length < 6) return "Password must be at least 6 characters.\n"
+//   else if (field1 != field2) return "Passwords do not match.\n"
+//   return ""
+// }
 
-  fail = validateClubName(form.club_name.value)
-  fail += validateUsername(form.username.value)
-  fail += validatePassword(form.password.value, form.confirm_password.value)
-
-  if (fail == "") return true
-  else {alert(fail); return false}
-}
+//==================================================
+var flag=0;
 
 function validateClubName(field){
-  return (field == "") ? "No Club Name was entered.\n" : ""
+  if(field==""){
+    document.getElementById("error0").innerHTML="No Club Name was entered.";
+    flag=1;
+  }
+  else{
+    document.getElementById("error0").innerHTML="";
+  }
 }
 
 function validateUsername(field){
-  return (field == "") ? "No Username was entered.\n" : ""
+  if(field==""){
+    document.getElementById("error1").innerHTML="No Username was entered.";
+    flag=1;
+  }
+  else{
+    document.getElementById("error1").innerHTML="";
+  }
 }
 
 function validatePassword(field1, field2){
-  if (field1 == "") return "No Password was entered.\n"
-  else if (field1.length < 6) return "Password must be at least 6 characters.\n"
-  else if (field1 != field2) return "Passwords do not match.\n"
-  return ""
+  if (field1 == ""){
+    document.getElementById("error2").innerHTML="No Password was entered.";
+    flag=1;
+  }
+  else if (field1.length < 6){
+    document.getElementById("error2").innerHTML="Password must be at least 6 characters.";
+    flag=1;
+  }
+  else if (field1 != field2){
+    document.getElementById("error2").innerHTML="Passwords do not match.";
+    flag=1;
+  }
+  else{
+    document.getElementById("error2").innerHTML="";
+  }
+}
+
+function validateClub(form){
+  flag=0;
+  validateClubName(form.club_name.value);
+  validateUsername(form.username.value);
+  validatePassword(form.password.value, form.confirm_password.value);
+  if(flag==1){
+    return false;
+  }
+  else{
+    return true;
+  }
 }
