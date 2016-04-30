@@ -4,7 +4,6 @@
 include ('attendance_model.php');
 
 // Controller
-$error_message = '';
 $get_variables = $_GET;
 
 if ($get_variables['action']=='validate') {

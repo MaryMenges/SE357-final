@@ -139,10 +139,12 @@ print_four;
                 <form action="club_main_page.php?action=new_event" method="POST" onsubmit="return validateEvent(this)">
 
                   <fieldset class="form-group">
+                    <div id="eError0"></div>
                     <input type="text" class="form-control" for="eventName" placeholder="Name" name="event_name" />
                   </fieldset>
 
                   <fieldset class="form-group">
+                    <div id="eError1"></div>
                     <select class="form-control" for="eventType" name="event_type">
                       <option value="" hidden>Type</option>
                       <option value="general_meeting">General Meeting</option>
@@ -152,6 +154,7 @@ print_four;
                   </fieldset>
 
                   <fieldset class="form-group">
+                    <div id="eError2"></div>
                     <div class="input-group date" date-provide="datepicker">
                       <input type="text" class="form-control" placeholder="Date" name="date" id="picker" readonly/>
                       <div class="input-group-addon">
@@ -229,18 +232,22 @@ print_four;
                 <form action="club_main_page.php?action=new_member" method="POST" onsubmit="return validateMember(this)">
 
                   <fieldset class="form-group">
+                    <div id="mError0"></div>
                     <input type="text" class="form-control" for="studentID" placeholder="Student ID" name="student_id" />
                   </fieldset>
 
                   <fieldset class="form-group">
+                    <div id="mError1"></div>
                     <input type="text" class="form-control" for="memberFName" placeholder="First Name" name="first_name" />
                   </fieldset>
 
                   <fieldset class="form-group">
+                    <div id="mError2"></div>
                     <input type="text" class="form-control" for="memberLName" placeholder="Last Name" name="last_name" />
                   </fieldset>
 
                   <fieldset class="form-group">
+                    <div id="mError3"></div>
                     <input type="text" class="form-control" for="memberEmail" placeholder="Email" name="email" />
                   </fieldset>
 
@@ -307,6 +314,11 @@ print_four;
         });
       });
     </script>
+<<<<<<< HEAD
+
+    <script type="text/javascript" src="eventValidation.js"></script>
+    <script type="text/javascript" src="memberValidation.js"></script>
+=======
     <script>
       $(document).on("click", ".open-event-modal", function(){
         var eventID = $(this).data('id');
@@ -324,6 +336,7 @@ print_four;
       });
     </script>
     <script type="text/javascript" src="validations.js"></script>
+>>>>>>> upstream/master
 
   </body>
 </html>
