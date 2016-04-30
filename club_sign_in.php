@@ -3,8 +3,6 @@
 // Model
 include ('attendance_model.php');
 
-$error_message = 'my error';
-
 // Controller
 
 $error_message = '';
@@ -15,7 +13,7 @@ if ($get_variables['action']=='invalid_login') {
   session_destroy();
   $username = "";
   $password = "";
-  $error_message = 'INVALID USERNAME AND PASSWORD';
+  $error_message = 'Invalid Username and Password.';
 }
 
 else if ($get_variables['action']=='sign_out') {

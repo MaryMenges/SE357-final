@@ -2,32 +2,11 @@
 
 require_once ('mysql_pdo_connect.php');
 
-// returns true if the username exists in the club_login table, returns false if it does not
-// function usernameExists($username) {
-// 	global $db;
-// 	$result = array();
-//
-// 	try {
-// 		$stmt = $db->query("SELECT username FROM club_login ");
-// 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// 	}
-// 	catch (PDOException $ex) {
-//     echo "Exception in usernameExists";
-// 	}
-// 	foreach($result as $test){
-// 		if (strcmp($test['username'], $username) == 0){
-// 			return true;
-// 		}
-// 	}
-// 	return false;
-// }
-
 // returns the club_id if the username and password are valid, returns NULL if they are not
 function validateCredentials($username, $password) {
 	global $db;
 
 	try {
-		//$stmt = $db->query("SELECT club_id FROM club_login WHERE username = '$username' AND password = '$password' ");
 		$stmt = $db->prepare("CALL validateCredentials(:username, :password) ");
 		$stmt->execute(array(':username' => $username, ':password' => $password));
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,11 +21,11 @@ function validateCredentials($username, $password) {
 	}
 }
 
+// returns the member_id if the student_id belongs to a member of the club, returns NULL it does not
 function validateMemberForEvent($student_id, $club_id) {
 	global $db;
 
 	try {
-		//$stmt = $db->query("SELECT club_id FROM club_login WHERE username = '$username' AND password = '$password' ");
 		$stmt = $db->prepare("CALL validateMemberForEvent(:student_id, :club_id) ");
 		$stmt->execute(array(':student_id' => $student_id, ':club_id' => $club_id));
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -62,17 +41,11 @@ function validateMemberForEvent($student_id, $club_id) {
 }
 
 
-// inserts a new club and returns the club_id *** should use a transaction ***
+// inserts a new club and returns the club_id
 function insertClub($club_name, $username, $password) {
 	global $db;
 
 	try {
-		// $stmt = $db->prepare("INSERT INTO club (club_id, club_name) VALUES (NULL, :club_name) ");
-		// $stmt->execute(array(':club_name' => $club_name));
-    // $last_id = $db->lastInsertId();
-		//
-		// $stmt = $db->prepare("INSERT INTO club_login (club_id, username, password) VALUES (:last_id, :username, :password) ");
-		// $stmt->execute(array(':last_id' => $last_id, ':username' => $username, ':password' => $password));
 		$stmt = $db->prepare("CALL insertClub(:club_name, :username, :password) ");
 		$stmt->execute(array(':club_name' => $club_name, ':username' => $username, ':password' => $password));
 
@@ -116,7 +89,7 @@ function insertMember($club_id, $student_id, $officer, $first_name, $last_name, 
 	}
 }
 
-// inserts a new attendance
+// inserts a new attendance record
 function insertAttendance($event_id, $member_id, $date_time) {
 	global $db;
 
@@ -132,6 +105,7 @@ function insertAttendance($event_id, $member_id, $date_time) {
 	}
 }
 
+// returns the club_name associated with the club_id
 function selectClubName($club_id) {
 	global $db;
 	$result = array();
@@ -148,6 +122,7 @@ function selectClubName($club_id) {
 		}
 }
 
+// returns an array of all members in the club
 function selectMember($club_id) {
 	global $db;
 	$result = array();
@@ -164,6 +139,7 @@ function selectMember($club_id) {
 		}
 }
 
+// returns an array of all events for the club
 function selectEvent($club_id) {
 	global $db;
 	$result = array();
@@ -180,6 +156,7 @@ function selectEvent($club_id) {
 		}
 }
 
+// returns the event_name associated with the event_id
 function selectEventName($event_id) {
 	global $db;
 	$result = array();
@@ -196,8 +173,7 @@ function selectEventName($event_id) {
 		}
 }
 
-
-
+// returns details associated with the event_id
 function selectEventDetails($event_id) {
 	global $db;
 	$result = array();
