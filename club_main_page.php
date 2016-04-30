@@ -34,7 +34,7 @@ else if ($get_variables['action']=='create_account') {
 	$password = $post_variables['password'];
 	$confirm_password = $post_variables['confirm_password'];
 
-	if(strcmp($password, $confirm_password) == 0){
+	// if(strcmp($password, $confirm_password) == 0){
 		$club_id = insertClub($club_name, $username, $password);
 		if($club_id == -1){
 			header("Location:  http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/club_register.php?action=username_exists");
@@ -45,11 +45,11 @@ else if ($get_variables['action']=='create_account') {
 			$_SESSION['club_id'] = $club_id;
 			$_SESSION['club_name'] = selectClubName($_SESSION['club_id']);
 		}
-	}
-	else {
-		header("Location:  http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/club_register.php?action=password_mismatch");
-		exit();
-	}
+	// }
+	// else {
+	// 	header("Location:  http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/club_register.php?action=password_mismatch");
+	// 	exit();
+	// }
 }
 
 else if ($get_variables['action']=='new_event') {

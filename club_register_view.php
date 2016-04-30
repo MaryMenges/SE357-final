@@ -24,7 +24,12 @@
 
         <form action='club_main_page.php?action=create_account' method='POST' onsubmit="return validateClub(this)">
 
-          <div class="alert alert-info" role="alert"><?php echo $error_message ?></div>
+          <div class="alert alert-info" role="alert">
+            <div id="error0"></div>
+            <div id="error1"></div>
+            <div id="error2"></div>
+            <?php echo $error_message ?>
+          </div>
 
           <fieldset class="form-group">
             <input type="text" class="form-control" for="clubName" placeholder="Club Name" name="club_name" />
