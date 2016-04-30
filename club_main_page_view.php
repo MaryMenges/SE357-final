@@ -42,9 +42,10 @@
 
         <div class="col-md-4">
 
-          <form action="member_sign_in.php?action=start_event_sign_in" method="POST">
+          <form class="form-inline" action="member_sign_in.php?action=start_event_sign_in" method="POST">
 
-          <div class="input-group" style="margin-bottom:25px;">
+          <div class="form-group pull-right" style="margin-bottom:25px;">
+                        <button class="btn btn-default" type="submit" >Go!</button>
             <select class="form-control" for="eventType" name="event_id" style="">
               <option hidden>Select Event to Begin Sign In</option>
 <?php
@@ -55,10 +56,9 @@ print_one;
 }
 ?>
             </select>
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="submit" >Go!</button>
-            </span>
           </div>
+
+
         </form>
         </div>
 
@@ -76,9 +76,9 @@ print_one;
                   <th># Attended</th>
 <!-- Printing event titles-->
 <?php
-foreach($event as $e) {
+foreach($event as $a) {
 print<<<print_one
-<th>$e[event_name]</th>
+<th data-toggle="modal" data-target="#event-modal" class="open-event-modal" data-id="Name: $a[event_name] <br /> Event Type: $a[event_type] <br /> Date: $a[date] <br />" href="#event-modal">$a[event_name]</th>
 print_one;
 }
 ?>
@@ -89,12 +89,15 @@ print_one;
 <?php
 foreach($member as $m) {
 print <<<print_one
-<tr>
+<tr data-toggle="modal" data-target="#student-modal" class="open-student-modal" data-id="Member ID: $m[student_id]<br /> First Name: $m[first_name] <br /> Last Name: $m[last_name] <br /> Email: $m[email] <br /> Phone: $m[phone] <br /> Major: $m[major] <br /> Graduation Year: $m[grad_year]" href="#student-modal">
 <td>$m[student_id]</td>
 <td>$m[first_name]</td>
 <td>$m[last_name]</td>
-<td>0</td>
 print_one;
+$c = count($attendance[$m[member_id]]);
+print <<<print_total
+<td>$c</td>
+print_total;
 
 
 foreach($event as $e) {
@@ -168,6 +171,48 @@ print_four;
           </div>
         </div>
 
+
+        <!-- View Event Modal -->
+        <div class="modal fade" id="event-modal" rold="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                View Event
+              </div>
+
+              <!-- Event information -->
+              <div class="modal-body">
+                <div class="" id="getEventID">
+
+                </div>
+
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- View Student Modal -->
+        <div class="modal fade" id="student-modal" rold="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                View Member
+              </div>
+
+              <!-- Event information -->
+              <div class="modal-body">
+                <div class="" id="getStudentID">
+
+                </div>
+
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
 
 
         <!-- New student modal -->
@@ -262,7 +307,22 @@ print_four;
         });
       });
     </script>
-
+    <script>
+      $(document).on("click", ".open-event-modal", function(){
+        var eventID = $(this).data('id');
+        $(".modal-body #eventID").val(eventID);
+        console.log(eventID);
+        document.getElementById("getEventID").innerHTML = eventID;
+      });
+    </script>
+    <script>
+      $(document).on("click", ".open-student-modal", function(){
+        var studentID = $(this).data('id');
+        $(".modal-body #eventID").val(studentID);
+        console.log(studentID);
+        document.getElementById("getStudentID").innerHTML = studentID;
+      });
+    </script>
     <script type="text/javascript" src="validations.js"></script>
 
   </body>
