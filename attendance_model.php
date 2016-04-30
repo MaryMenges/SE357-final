@@ -46,7 +46,6 @@ function validateMemberForEvent($student_id, $club_id) {
 	global $db;
 
 	try {
-		//$stmt = $db->query("SELECT club_id FROM club_login WHERE username = '$username' AND password = '$password' ");
 		$stmt = $db->prepare("CALL validateMemberForEvent(:student_id, :club_id) ");
 		$stmt->execute(array(':student_id' => $student_id, ':club_id' => $club_id));
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -67,12 +66,6 @@ function insertClub($club_name, $username, $password) {
 	global $db;
 
 	try {
-		// $stmt = $db->prepare("INSERT INTO club (club_id, club_name) VALUES (NULL, :club_name) ");
-		// $stmt->execute(array(':club_name' => $club_name));
-    // $last_id = $db->lastInsertId();
-		//
-		// $stmt = $db->prepare("INSERT INTO club_login (club_id, username, password) VALUES (:last_id, :username, :password) ");
-		// $stmt->execute(array(':last_id' => $last_id, ':username' => $username, ':password' => $password));
 		$stmt = $db->prepare("CALL insertClub(:club_name, :username, :password) ");
 		$stmt->execute(array(':club_name' => $club_name, ':username' => $username, ':password' => $password));
 
