@@ -314,11 +314,10 @@ print_four;
         });
       });
     </script>
-<<<<<<< HEAD
 
     <script type="text/javascript" src="eventValidation.js"></script>
     <script type="text/javascript" src="memberValidation.js"></script>
-=======
+
     <script>
       $(document).on("click", ".open-event-modal", function(){
         var eventID = $(this).data('id');
@@ -335,8 +334,6 @@ print_four;
         document.getElementById("getStudentID").innerHTML = studentID;
       });
     </script>
-    <script type="text/javascript" src="validations.js"></script>
->>>>>>> upstream/master
 
   </body>
 </html>
